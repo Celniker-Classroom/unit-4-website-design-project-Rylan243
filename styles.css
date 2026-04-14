@@ -1,1 +1,104 @@
 /* Add Global styles here */
+body{
+    margin: 0px; 
+}
+main{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+h1{
+    text-align: center;
+}
+.navbar ul{
+    list-style-type: none; 
+    background-color: black;
+    padding: 0px;
+    margin: 0px; 
+    overflow: hidden; 
+}
+.navbar a{
+    color: yellow;
+    text-decoration: none;
+    padding: 15px;
+    display: block; 
+    text-align: center;
+}
+.navbar a:hover{
+    background-color: blue 
+}
+.navbar li{
+    float: left; 
+}
+
+table, th, td {
+    border: 2px solid black; 
+}
+
+
+* {box-sizing:border-box}
+
+div {
+  width: 30px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center; /* vertically centers the div with the text */
+  gap: 16px;          /* space between the h1 and the div */
+}
+
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: orange; /* just so you can see it */
+}
+
+
+
+/* Style all font awesome icons */
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #fdf497 0%,
+    #fdf497 30%,
+    #fd5949 50%,
+    #d6249f 70%,
+    #285AEB 100%
+  );
+}
+
+.fa {
+  display: inline-block; /* makes icons sit side by side */
+  margin-right: 10px;    /* space between icons */
+  font-size: 24px;       /* optional: make icons bigger */
+}
