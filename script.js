@@ -1,51 +1,58 @@
-// add javascript here
-let startTime;
+
+let startTime = 0;
 let elapsedTime = 0;
-let timerInterval;
+let timerInterval = null;
 
-function timeToString(time) {
-  let diffInHrs = time / 3600000;
-  let hh = Math.floor(diffInHrs);
+const display = document.getElementById("display");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
 
-  let diffInMin = (diffInHrs - hh) * 60;
-  let mm = Math.floor(diffInMin);
 
-  let diffInSec = (diffInMin - mm) * 60;
-  let ss = Math.floor(diffInSec);
+if (display && startBtn && pauseBtn && resetBtn) {
+  function timeToString(time) {
+    const diffInMs = time;
 
-  let formattedHH = hh.toString().padStart(2, "0");
-  let formattedMM = mm.toString().padStart(2, "0");
-  let formattedSS = ss.toString().padStart(2, "0");
+    const minutes = Math.floor(diffInMs / 60000);
+    const seconds = Math.floor((diffInMs % 60000) / 1000);
+    const centiseconds = Math.floor((diffInMs % 1000) / 10);
 
-  return `${formattedHH}:${formattedMM}:${formattedSS}`;
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    const formattedSeconds = seconds.toString().padStart(2, "0");
+    const formattedCenti = centiseconds.toString().padStart(2, "0");
+
+    return `${formattedMinutes}:${formattedSeconds}.${formattedCenti}`;
+  }
+
+  function startTimer() {
+ 
+    if (timerInterval) return;
+
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(() => {
+      elapsedTime = Date.now() - startTime;
+      display.textContent = timeToString(elapsedTime);
+    }, 10);
+  }
+
+  function pauseTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    elapsedTime = 0;
+    display.textContent = "00:00.00";
+  }
+
+  startBtn.addEventListener("click", startTimer);
+  pauseBtn.addEventListener("click", pauseTimer);
+  resetBtn.addEventListener("click", resetTimer);
 }
 
-function start() {
-  // If already running, do nothing
-  if (timerInterval) return;
 
-  startTime = Date.now() - elapsedTime; // Keep previous time when resuming
-  timerInterval = setInterval(function () {
-    elapsedTime = Date.now() - startTime;
-    document.getElementById("display").textContent = timeToString(elapsedTime);
-  }, 1000);
+function myFunction(x) {
+  x.classList.toggle("fa-thumbs-down");
 }
-
-function stop() {
-  clearInterval(timerInterval);
-  timerInterval = null;
-}
-
-function reset() {
-  clearInterval(timerInterval);
-  timerInterval = null;
-  elapsedTime = 0;
-  document.getElementById("display").textContent = "00:00:00";
-}
-
-// Hook up the buttons after the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("startBtn").addEventListener("click", start);
-  document.getElementById("stopBtn").addEventListener("click", stop);
-  document.getElementById("resetBtn").addEventListener("click", reset);
-});
