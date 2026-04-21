@@ -116,4 +116,28 @@ div {
 }
 
 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 10px 0;
+}
 
+
+body {
+  background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-Mirf0OoApDexLOoUBBm_v15ybPENkHFM_tTmOG5AkSAL5wXKzQZprqgV8Kruz9FBe-t9AfMX68SvOSvKkfsoRZkDwbi4WoDwnsxXyjG7pNc53bfQuEfugGjkfd-jcFnW0U5H8Dck7g/s1600/DSC_0060.JPGg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+body {
+  color: white;
+}
+
+a {
+  color: white;
+}
